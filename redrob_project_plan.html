@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redrob Hackathon Project Plan</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #5d6974;
+      --line: #d9e0e6;
+      --soft: #f6f8fa;
+      --panel: #ffffff;
+      --blue: #2563eb;
+      --green: #16845b;
+      --amber: #9a6700;
+      --red: #b42318;
+      --violet: #6f42c1;
+      --shadow: 0 12px 28px rgba(23, 32, 38, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      background: #edf2f7;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 28px 22px;
+      background: #111827;
+      color: #f8fafc;
+      border-right: 1px solid #0b1220;
+    }
+
+    aside h1 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    aside p {
+      margin: 0 0 22px;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    nav {
+      display: grid;
+      gap: 4px;
+    }
+
+    nav a {
+      color: #e5e7eb;
+      display: block;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #1f2937;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 36px;
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto 24px;
+      padding: 34px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: 0 auto 18px;
+      padding: 26px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 10px 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: #eef2f7;
+      color: #0f172a;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      overflow: auto;
+      padding: 14px;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .box {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .box h3 {
+      margin-top: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 3px 3px 3px 0;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      color: #26313d;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tag.good { background: #dcfce7; color: #14532d; }
+    .tag.warn { background: #fef3c7; color: #78350f; }
+    .tag.bad { background: #fee2e2; color: #7f1d1d; }
+    .tag.info { background: #dbeafe; color: #1e3a8a; }
+    .tag.violet { background: #ede9fe; color: #4c1d95; }
+
+    .callout {
+      margin: 14px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--blue);
+      background: #eff6ff;
+      border-radius: 6px;
+    }
+
+    .callout.warn {
+      border-color: var(--amber);
+      background: #fffbeb;
+    }
+
+    .callout.danger {
+      border-color: var(--red);
+      background: #fef2f2;
+    }
+
+    .callout.success {
+      border-color: var(--green);
+      background: #ecfdf5;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.7fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .formula {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      overflow-x: auto;
+    }
+
+    .timeline {
+      counter-reset: step;
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline .item {
+      position: relative;
+      padding: 14px 14px 14px 46px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .timeline .item::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .checklist label {
+      display: block;
+      margin: 8px 0;
+    }
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      vertical-align: -2px;
+    }
+
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+      }
+
+      main {
+        padding: 18px;
+      }
+
+      .meta-grid, .two-col, .three-col, .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero, section {
+        padding: 20px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .shell {
+        display: block;
+      }
+
+      aside {
+        display: none;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      .hero, section {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <h1>Redrob Project Plan</h1>
+      <p>Single-file plan for building, validating, packaging, and defending the Intelligent Candidate Discovery & Ranking Challenge submission.</p>
+      <nav aria-label="Page navigation">
+        <a href="#summary">Executive Summary</a>
+        <a href="#requirements">Hard Requirements</a>
+        <a href="#target">Target Candidate</a>
+        <a href="#data">Data Understanding</a>
+        <a href="#strategy">Ranking Strategy</a>
+        <a href="#features">Feature Plan</a>
+        <a href="#honeypots">Trap & Honeypot Defense</a>
+        <a href="#implementation">Implementation Plan</a>
+        <a href="#evaluation">Local Evaluation</a>
+        <a href="#reasoning">Reasoning Generation</a>
+        <a href="#deliverables">Submission Package</a>
+        <a href="#timeline">Execution Timeline</a>
+        <a href="#decisions">Decision Points</a>
+        <a href="#checklists">Checklists</a>
+      </nav>
+    </aside>
+
+    <main>
+      <div class="hero" id="summary">
+        <h2>Project Plan: Senior AI Engineer Candidate Ranker</h2>
+        <p>
+          Build a reproducible CPU-only ranker that selects the top 100 candidates from 100,000 profiles for Redrob AI's founding Senior AI Engineer role. The core bet is simple: rank candidates by evidence of shipped retrieval, ranking, search, and applied ML systems in product environments, then adjust for availability, location, culture fit, and profile consistency.
+        </p>
+        <div class="meta-grid">
+          <div class="metric"><strong>100,000</strong><span>candidate records in <code>candidates.jsonl</code></span></div>
+          <div class="metric"><strong>Top 100</strong><span>rows required in final CSV</span></div>
+          <div class="metric"><strong>&lt;= 5 min</strong><span>ranking runtime on CPU, 16 GB RAM</span></div>
+          <div class="metric"><strong>0 network</strong><span>no hosted API calls during ranking</span></div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Recommended Approach</h2>
+        <div class="callout success">
+          <strong>Build a deterministic hybrid ranker first.</strong> Use structured signals, lexical evidence, and carefully weighted heuristics. Add optional local embeddings only if they are fully cached and reproducible. Do not rely on live LLM calls, broad keyword counts, or one-shot prompt scoring.
+        </div>
+        <div class="three-col">
+          <div class="box">
+            <h3>1. Candidate Fit</h3>
+            <p>Score role evidence: retrieval/search/ranking systems, vector databases, evaluation frameworks, Python, production deployment, product-company shipping, and hands-on coding.</p>
+          </div>
+          <div class="box">
+            <h3>2. Hiring Reality</h3>
+            <p>Modify by Redrob behavioral signals: recent activity, recruiter response, response speed, open-to-work flag, notice period, verification, location, and relocation.</p>
+          </div>
+          <div class="box">
+            <h3>3. Risk Control</h3>
+            <p>Penalize keyword stuffing, service-only career histories, pure research, irrelevant AI domains, impossible profiles, stale candidates, and reasoning hallucinations.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="requirements">
+        <h2>Hard Requirements From The Bundle</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Requirement</th>
+              <th>Project implication</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Submission file</td>
+              <td>CSV named with registered participant ID, UTF-8 encoded.</td>
+              <td>Implement <code>rank.py --candidates ./data/candidates.jsonl --out ./submission.csv</code> and rename final output before upload.</td>
+            </tr>
+            <tr>
+              <td>Columns</td>
+              <td>Exactly <code>candidate_id,rank,score,reasoning</code> in this order.</td>
+              <td>Generate via Python <code>csv</code> module, never manual spreadsheet edits.</td>
+            </tr>
+            <tr>
+              <td>Rows</td>
+              <td>Exactly 100 data rows, ranks 1 through 100 once each, unique candidate IDs.</td>
+              <td>Automated validation must run in CI/local before every submission. Also check that every ID exists in the released candidate pool.</td>
+            </tr>
+            <tr>
+              <td>Scores</td>
+              <td>Float scores must be non-increasing by rank. Ties require deterministic ordering.</td>
+              <td>Use stable sorting by <code>(-score, candidate_id)</code> and generate rank after sorting.</td>
+            </tr>
+            <tr>
+              <td>Runtime</td>
+              <td>&lt;= 5 minutes wall-clock, CPU only, &lt;= 16 GB RAM, &lt;= 5 GB intermediate disk, no network.</td>
+              <td>Stream JSONL, avoid per-candidate LLMs, keep features compact, cache optional artifacts in repo.</td>
+            </tr>
+            <tr>
+              <td>Evaluation</td>
+              <td>Composite = 0.50 NDCG@10 + 0.30 NDCG@50 + 0.15 MAP + 0.05 P@10.</td>
+              <td>Optimize top 10 first. A cautious, high-precision top 10 matters more than broad recall.</td>
+            </tr>
+            <tr>
+              <td>Stage 3</td>
+              <td>Top submissions must reproduce inside sandbox and pass honeypot rate <= 10% in top 100.</td>
+              <td>Build a clear repo, single command, no hidden manual steps, explicit trap checks.</td>
+            </tr>
+            <tr>
+              <td>Stage 4</td>
+              <td>Manual review checks reasoning specificity, JD connection, honest concerns, no hallucination, variation, rank consistency.</td>
+              <td>Generate reasoning directly from scored facts and audit sampled rows.</td>
+            </tr>
+            <tr>
+              <td>Stage 5</td>
+              <td>Finalists defend the architecture, code, and choices in a 30-minute interview.</td>
+              <td>Keep the implementation understandable, document tradeoffs, and maintain a real iteration history.</td>
+            </tr>
+            <tr>
+              <td>Submission cap</td>
+              <td>At most 3 submissions. The last valid submission counts.</td>
+              <td>Submit only after local validation, manual audit, and runtime proof. Do not burn attempts on small guesses.</td>
+            </tr>
+            <tr>
+              <td>Leaderboard</td>
+              <td>No live leaderboard or feedback during the competition.</td>
+              <td>Use internal audit quality and reproducibility checks instead of repeated uploads.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="target">
+        <h2>Target Candidate Profile</h2>
+        <p>The JD is for a Senior AI Engineer on a founding team. The right ranking should read between the lines and avoid "AI keyword density" as the main signal.</p>
+        <div class="two-col">
+          <div class="box">
+            <h3>Strong Positive Evidence</h3>
+            <ul>
+              <li>5 to 9 years total experience, with flexibility for exceptional 4 or 10+ year profiles.</li>
+              <li>Production search, recommendation, retrieval, ranking, or matching systems shipped to real users.</li>
+              <li>Embeddings-based retrieval, hybrid search, vector database, or search infrastructure operations.</li>
+              <li>Evaluation literacy: NDCG, MRR, MAP, A/B testing, offline benchmarks, regression tracking.</li>
+              <li>Strong Python and hands-on production coding in the last 18 months.</li>
+              <li>Product-company experience, especially SaaS, AI/ML, marketplace, fintech, edtech, ecommerce, or data products.</li>
+              <li>Scrappy product-engineering orientation: shipped working systems, iterated with users, owned production quality.</li>
+              <li>India-based, preferably Pune, Noida, Delhi NCR, Hyderabad, Mumbai, or Bangalore, or willing to relocate.</li>
+              <li>Recent platform engagement and clear ability to respond to recruiters.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Negative Evidence</h3>
+            <ul>
+              <li>Career only at consulting or IT services firms: TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini, HCL, Mindtree.</li>
+              <li>Pure research with no production deployment.</li>
+              <li>Only recent LangChain/OpenAI wrapper projects without pre-LLM ML/search depth.</li>
+              <li>Architecture-only leadership with no recent coding.</li>
+              <li>Primary experience in computer vision, speech, robotics, marketing, HR, accounting, support, or operations without serious NLP/IR evidence.</li>
+              <li>Job hopping focused on title escalation, especially every 12 to 18 months.</li>
+              <li>Inactive candidates: stale login, low response rate, long response time, not open to work, high notice period.</li>
+              <li>Suspicious or impossible profile details that may indicate honeypots.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout warn">
+          <strong>Interpretation rule:</strong> A plain-language profile that says "built a recommendation service and ranking evaluation for a marketplace" is stronger than a profile listing RAG, Pinecone, and LoRA as skills with no career evidence.
+        </div>
+      </section>
+
+      <section id="data">
+        <h2>Data Understanding</h2>
+        <p>The supplied files include the full candidate pool, schema, sample rows, validator, submission metadata template, job description, behavioral signal guide, and submission spec.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Purpose</th>
+              <th>How to use it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>README.docx</code></td>
+              <td>Participant bundle overview and suggested reading order.</td>
+              <td>Use as the master checklist for what to read, build, validate, and submit.</td>
+            </tr>
+            <tr>
+              <td><code>job_description.docx</code></td>
+              <td>Target Senior AI Engineer role and participant guidance.</td>
+              <td>Defines the meaning of fit: shipped retrieval/ranking systems, product engineering, and availability over keyword stuffing.</td>
+            </tr>
+            <tr>
+              <td><code>candidates.jsonl</code></td>
+              <td>100,000 candidate records, 465 MB.</td>
+              <td>Stream line by line for ranking. Avoid loading large derived objects unnecessarily.</td>
+            </tr>
+            <tr>
+              <td><code>sample_candidates.json</code></td>
+              <td>First 50 pretty-printed profiles.</td>
+              <td>Manual inspection, reasoning style calibration, edge-case examples.</td>
+            </tr>
+            <tr>
+              <td><code>candidate_schema.json</code></td>
+              <td>Field definitions for profile, career history, education, skills, certifications, languages, and Redrob signals.</td>
+              <td>Drive feature extraction and avoid missing nullable or optional fields.</td>
+            </tr>
+            <tr>
+              <td><code>redrob_signals_doc.docx</code></td>
+              <td>Definitions of 23 behavioral signals.</td>
+              <td>Build availability, responsiveness, and hireability modifier.</td>
+            </tr>
+            <tr>
+              <td><code>submission_spec.docx</code></td>
+              <td>Rules, scoring, stages, sandbox, metadata, and rejection causes.</td>
+              <td>Turn into automated checks and final packaging checklist.</td>
+            </tr>
+            <tr>
+              <td><code>data/validate_submission.py</code></td>
+              <td>Official local format validator.</td>
+              <td>Run before every submission and include in CI.</td>
+            </tr>
+            <tr>
+              <td><code>sample_submission.csv</code></td>
+              <td>Format-only sample with 101 lines including the header.</td>
+              <td>Use only as a CSV structure reference, not as a ranking-quality example.</td>
+            </tr>
+            <tr>
+              <td><code>submission_metadata_template.yaml</code></td>
+              <td>Metadata fields required in portal and Stage 3 review.</td>
+              <td>Copy to <code>submission_metadata.yaml</code> and fill team, repo, sandbox, compute, AI tools, methodology, and declarations.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Observed Pool Profile</h3>
+        <div class="three-col">
+          <div class="box">
+            <span class="tag info">Location</span>
+            <p>75,113 candidates are in India. Preferred city strings include Noida, Hyderabad, Bangalore, Pune, Delhi, and Mumbai, about 4.0k to 4.3k each.</p>
+          </div>
+          <div class="box">
+            <span class="tag info">Availability</span>
+            <p>35,339 candidates are open to work. Recruiter response rate median is 0.44, 90th percentile is 0.73.</p>
+          </div>
+          <div class="box">
+            <span class="tag info">Experience</span>
+            <p>Years of experience median is 6.8, 25th percentile is 3.9, 75th percentile is 9.9. The JD target band is well represented.</p>
+          </div>
+          <div class="box">
+            <span class="tag warn">Noise</span>
+            <p>The largest title groups are Business Analyst, HR Manager, Mechanical Engineer, Accountant, Project Manager, Support, Operations, and Content Writer.</p>
+          </div>
+          <div class="box">
+            <span class="tag warn">Keyword traps</span>
+            <p>Many AI skills appear in thousands of records: RAG, embeddings, FAISS, Pinecone, semantic search, recommendation systems, and Hugging Face Transformers.</p>
+          </div>
+          <div class="box">
+            <span class="tag warn">GitHub</span>
+            <p>64,637 candidates have no linked GitHub activity. Treat GitHub as a positive bonus, not a hard requirement.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="strategy">
+        <h2>Ranking Strategy</h2>
+        <div class="score-grid">
+          <div class="box">
+            <h3>Scoring Philosophy</h3>
+            <p>Use a transparent score that can be defended in an interview and explained row by row. Separate "can do the job" from "can be hired now."</p>
+            <p>Optimize top-of-list precision because NDCG@10 has 50% weight and P@10 is the final tiebreak ladder after P@5.</p>
+          </div>
+          <div class="formula">
+            final_score = 100 * (<br>
+            &nbsp;&nbsp;0.42 * role_depth<br>
+            &nbsp;&nbsp;+ 0.18 * production_evidence<br>
+            &nbsp;&nbsp;+ 0.12 * search_retrieval_match<br>
+            &nbsp;&nbsp;+ 0.08 * evaluation_maturity<br>
+            &nbsp;&nbsp;+ 0.08 * seniority_fit<br>
+            &nbsp;&nbsp;+ 0.06 * product_company_fit<br>
+            &nbsp;&nbsp;+ 0.06 * location_logistics_fit<br>
+            ) * behavioral_modifier - risk_penalty
+          </div>
+        </div>
+
+        <h3>Recommended Candidate Funnel</h3>
+        <ol>
+          <li><strong>Parse and normalize.</strong> Build normalized text fields from current role, summary, headline, career descriptions, skill names, education, company, and industry.</li>
+          <li><strong>Hard negative screen.</strong> Apply strong penalties for irrelevant current roles, service-only career, pure non-NLP AI domains, stale availability, and impossible profile signals.</li>
+          <li><strong>Evidence scoring.</strong> Score direct career evidence above skill tags. Current and recent roles get more weight than old roles.</li>
+          <li><strong>Behavioral modifier.</strong> Apply a multiplier for open-to-work, recency, response rate, response time, notice period, verification, and recruiter saves.</li>
+          <li><strong>Manual audit set.</strong> Export top 200 with feature breakdowns, inspect top 50 and borderline 80 to 130, adjust weights only with documented rationale.</li>
+          <li><strong>Freeze and generate.</strong> Produce final top 100, reasoning strings, metadata, and validation artifacts.</li>
+        </ol>
+      </section>
+
+      <section id="features">
+        <h2>Feature Plan</h2>
+        <h3>Core Fit Features</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Feature group</th>
+              <th>Positive indicators</th>
+              <th>Penalties and cautions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Role and title</td>
+              <td>Senior AI Engineer, ML Engineer, Applied ML Engineer, Data Scientist with search/retrieval, Backend/Data Engineer with ML ranking evidence.</td>
+              <td>Marketing, HR, accounting, support, operations, civil/mechanical unless career descriptions show credible search/retrieval work.</td>
+            </tr>
+            <tr>
+              <td>Search and retrieval depth</td>
+              <td>Semantic search, vector search, hybrid search, recommender systems, ranking systems, embeddings, retrieval quality, feature pipelines, index refresh.</td>
+              <td>Skill tags alone are weak. Require career-history or project-description support for high scores.</td>
+            </tr>
+            <tr>
+              <td>Infrastructure</td>
+              <td>FAISS, Milvus, Qdrant, Weaviate, Pinecone, Elasticsearch, OpenSearch, Spark, Airflow, Kafka, production pipelines, MLOps.</td>
+              <td>Cloud/devops-only profiles need ML/retrieval linkage to rank high.</td>
+            </tr>
+            <tr>
+              <td>Evaluation systems</td>
+              <td>NDCG, MRR, MAP, A/B tests, offline benchmarks, eval harnesses, ranking regression, recruiter feedback loops.</td>
+              <td>This is rare and should strongly separate top 10 candidates.</td>
+            </tr>
+            <tr>
+              <td>Python and code quality</td>
+              <td>Python, PyTorch, TensorFlow, scikit-learn, production services, APIs, deployment, monitoring.</td>
+              <td>No recent production code gets a meaningful penalty even if leadership title is high.</td>
+            </tr>
+            <tr>
+              <td>Seniority</td>
+              <td>5 to 9 years ideal; 4 to 10 acceptable when depth is high. Leadership through ownership or mentoring is a bonus.</td>
+              <td>&lt;3 years usually too junior. &gt;12 years can be over-senior unless hands-on and startup-aligned.</td>
+            </tr>
+            <tr>
+              <td>Company context</td>
+              <td>Product companies, SaaS, AI/ML, marketplace, fintech, ecommerce, edtech, data infrastructure.</td>
+              <td>Service-only careers are explicitly disfavored. Consulting-only background should be heavily down-weighted.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Behavioral Modifier</h3>
+        <p>Use Redrob signals as a multiplier, not as the main relevance score. The JD says a perfect-on-paper inactive candidate is not actually available.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Signal</th>
+              <th>Recommended treatment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>last_active_date</code></td>
+              <td>Strong positive if active within 30 to 45 days of the dataset's max date, moderate if within 90 days, penalty if stale.</td>
+            </tr>
+            <tr>
+              <td><code>open_to_work_flag</code></td>
+              <td>Positive multiplier. Do not make it mandatory because some senior candidates may not mark it.</td>
+            </tr>
+            <tr>
+              <td><code>recruiter_response_rate</code> and <code>avg_response_time_hours</code></td>
+              <td>High response and low response time increase hireability. Very low response plus stale activity should demote sharply.</td>
+            </tr>
+            <tr>
+              <td><code>notice_period_days</code></td>
+              <td>0 to 30 days positive, 60 neutral/slight penalty, 90+ penalty. JD says sub-30 preferred and 30+ requires higher bar.</td>
+            </tr>
+            <tr>
+              <td><code>preferred_work_mode</code> and <code>willing_to_relocate</code></td>
+              <td>Hybrid/onsite/flexible and preferred Indian cities are positive. Remote-only outside India should be penalized.</td>
+            </tr>
+            <tr>
+              <td><code>saved_by_recruiters_30d</code>, <code>search_appearance_30d</code></td>
+              <td>Small popularity signal. Cap aggressively to avoid rich-get-richer effects.</td>
+            </tr>
+            <tr>
+              <td><code>verified_email</code>, <code>verified_phone</code>, <code>linkedin_connected</code></td>
+              <td>Small trust and contactability bonuses.</td>
+            </tr>
+            <tr>
+              <td><code>github_activity_score</code></td>
+              <td>Bonus when present and high. Missing GitHub should not be a major penalty because most candidates lack it.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Useful Normalized Fields</h3>
+        <pre><code>candidate_text = headline + summary + current_title + current_industry
+career_text = weighted concatenation of career_history title, industry, company, description
+skills_text = skill names with proficiency, endorsements, duration_months
+recent_role_text = current role + latest career entry
+location_text = location + country + relocation/work-mode fields</code></pre>
+      </section>
+
+      <section id="honeypots">
+        <h2>Trap & Honeypot Defense</h2>
+        <p>The bundle warns about keyword stuffers, plain-language Tier 5s, behavioral twins, and roughly 80 honeypots with subtly impossible profiles. Submissions with honeypot rate above 10% in the top 100 are disqualified at Stage 3.</p>
+        <div class="two-col">
+          <div class="box">
+            <h3>Trap Types To Detect</h3>
+            <ul>
+              <li><strong>Keyword stuffer:</strong> many AI skills but non-technical career history or unrelated title.</li>
+              <li><strong>Plain-language strong fit:</strong> fewer buzzwords but built search, ranking, or recommender systems.</li>
+              <li><strong>Behavioral twin:</strong> similar technical profile but one candidate is available and responsive while the other is stale.</li>
+              <li><strong>Impossible profile:</strong> dates, skill durations, seniority, company age, or assessment patterns do not make sense.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Automated Checks</h3>
+            <ul>
+              <li>Skill density without career evidence: penalize when AI skill count is high but career descriptions lack production/search/retrieval terms.</li>
+              <li>Experience consistency: compare years of experience to career durations and title seniority.</li>
+              <li>Skill duration sanity: expert skill with zero months, many expert skills with tiny durations, or assessment scores that contradict claimed expertise.</li>
+              <li>Date sanity: current role date, signup date, last active date, career end dates, and education years.</li>
+              <li>Service-only career screen: all companies in explicit disfavored consulting list.</li>
+              <li>Availability floor: stale + low response + long notice should rarely enter top 100.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout danger">
+          <strong>Do not special-case exact honeypot IDs.</strong> Build general consistency penalties and manually inspect the final top 100 for suspicious rows.
+        </div>
+      </section>
+
+      <section id="implementation">
+        <h2>Implementation Plan</h2>
+        <h3>Proposed Repository Structure</h3>
+        <pre><code>redrob-ranker/
+  README.md
+  requirements.txt
+  rank.py
+  submission_metadata.yaml
+  src/
+    config.py
+    load.py
+    normalize.py
+    features.py
+    scoring.py
+    reasoning.py
+    validate_candidates.py
+  analysis/
+    inspect_top_candidates.py
+    profile_dataset.py
+  tests/
+    test_scoring.py
+    test_reasoning.py
+    test_submission_format.py
+  artifacts/
+    feature_weights.json
+    audit_top_200.csv
+  docs/
+    methodology.md</code></pre>
+
+        <h3>Build Steps</h3>
+        <div class="timeline">
+          <div class="item">
+            <strong>Baseline parser and validator</strong>
+            <p>Stream JSONL, validate IDs, extract fields safely, handle missing optional arrays, and write a small top-N debug file with feature columns.</p>
+          </div>
+          <div class="item">
+            <strong>Rule-based baseline score</strong>
+            <p>Implement keyword dictionaries with weights separated into career evidence, skill evidence, title evidence, product context, seniority, logistics, and behavior.</p>
+          </div>
+          <div class="item">
+            <strong>Risk and trap penalties</strong>
+            <p>Add consistency checks, service-only penalty, non-NLP AI penalty, keyword-stuffer penalty, stale behavior penalty, and high-notice penalty.</p>
+          </div>
+          <div class="item">
+            <strong>Reasoning generator</strong>
+            <p>Generate 1 to 2 sentence reasons from the strongest positive facts and the main concern. Restrict wording to facts present in the candidate record.</p>
+          </div>
+          <div class="item">
+            <strong>Manual audit workflow</strong>
+            <p>Export top 200 with all component scores. Inspect top 50 and ranks 80 to 130. Adjust weights in <code>feature_weights.json</code> with a changelog.</p>
+          </div>
+          <div class="item">
+            <strong>Final packaging</strong>
+            <p>Run validator, runtime benchmark, sample sandbox test, README reproduction, metadata completion, and final CSV generation.</p>
+          </div>
+        </div>
+
+        <h3>Runtime Design</h3>
+        <ul>
+          <li>Stream <code>candidates.jsonl</code> line by line and keep only a fixed-size heap or list of candidate scores. 100,000 records is small enough to keep compact score dicts in memory.</li>
+          <li>Precompile regex patterns and normalize text once per candidate.</li>
+          <li>Use only standard library plus optional lightweight dependencies such as <code>numpy</code>, <code>pandas</code>, or <code>scikit-learn</code> if they are pinned and justified.</li>
+          <li>Make output deterministic: fixed config, stable sorting, no randomness unless seeded and documented.</li>
+          <li>Write audit artifacts separately from the final CSV so the submitted file stays exactly four columns.</li>
+        </ul>
+
+        <h3>Single Reproduction Command</h3>
+        <pre><code>python rank.py --candidates ./data/candidates.jsonl --out ./submission.csv</code></pre>
+      </section>
+
+      <section id="evaluation">
+        <h2>Local Evaluation Without Hidden Labels</h2>
+        <p>There is no public leaderboard and no labels, so local evaluation must test method quality, not leaderboard score.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Purpose</th>
+              <th>Acceptance criteria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Format validation</td>
+              <td>Catch automatic rejection causes.</td>
+              <td><code>python data/validate_submission.py submission.csv</code> prints <code>Submission is valid.</code></td>
+            </tr>
+            <tr>
+              <td>Runtime benchmark</td>
+              <td>Prove Stage 3 reproducibility.</td>
+              <td>Full ranking completes in &lt;= 5 minutes on CPU with &lt;= 16 GB RAM.</td>
+            </tr>
+            <tr>
+              <td>Top-10 manual audit</td>
+              <td>Optimize 50% NDCG@10 weight.</td>
+              <td>Every top-10 candidate has direct production search/retrieval/ranking/applied ML evidence or a very strong equivalent.</td>
+            </tr>
+            <tr>
+              <td>Top-100 trap audit</td>
+              <td>Avoid Stage 3 honeypot filter.</td>
+              <td>No obvious impossible profiles; keyword-only candidates demoted.</td>
+            </tr>
+            <tr>
+              <td>Reasoning sample audit</td>
+              <td>Prepare for Stage 4 manual review.</td>
+              <td>Random 10 reasonings are specific, truthful, varied, and rank-consistent.</td>
+            </tr>
+            <tr>
+              <td>Ablation review</td>
+              <td>Understand weight sensitivity.</td>
+              <td>Compare with and without behavior modifier, service penalty, keyword-stuffer penalty, and location modifier.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="reasoning">
+        <h2>Reasoning Generation Plan</h2>
+        <p>The reasoning column is optional but strongly recommended and used in Stage 4. It should be generated from structured facts, not by a language model hallucinating profile details.</p>
+        <h3>Reasoning Template Logic</h3>
+        <pre><code>positive_facts = [
+  strongest_role_fact,
+  strongest_retrieval_or_ranking_fact,
+  strongest_production_or_evaluation_fact,
+  strongest_behavior_or_location_fact
+]
+concern = highest_penalty_reason if meaningful
+reasoning = one sentence of fit + one short concern or availability note</code></pre>
+        <h3>Examples Of Acceptable Tone</h3>
+        <ul>
+          <li>Rank 1 to 10: confident, specific, and direct about production search/ranking evidence.</li>
+          <li>Rank 11 to 50: strong but acknowledge a minor concern such as location, notice period, or missing GitHub.</li>
+          <li>Rank 51 to 100: realistic and bounded, such as "adjacent fit" or "strong data engineering base but less explicit ranking ownership."</li>
+        </ul>
+        <div class="callout warn">
+          Never mention a skill, employer, location, assessment, or years of experience unless it is present in the candidate record or computed directly from it.
+        </div>
+      </section>
+
+      <section id="deliverables">
+        <h2>Submission Package</h2>
+        <div class="two-col">
+          <div class="box">
+            <h3>Required Upload</h3>
+            <ul>
+              <li>Final CSV with exactly 100 data rows.</li>
+              <li>Team name, primary contact name, email, phone.</li>
+              <li>Team member list with names and emails.</li>
+              <li>GitHub repository URL.</li>
+              <li>Sandbox or demo link.</li>
+              <li>AI tools declaration.</li>
+              <li>Compute environment summary.</li>
+              <li>Methodology summary, max 200 words, strongly recommended.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Repository Must Include</h3>
+            <ul>
+              <li>Clear <code>README.md</code> with setup and exact reproduction command.</li>
+              <li>Full source code that produced the CSV.</li>
+              <li>No hidden manual edits and no external API calls during ranking.</li>
+              <li>Dependency file with pinned or bounded versions.</li>
+              <li>Any required precomputed artifacts or scripts to generate them.</li>
+              <li><code>submission_metadata.yaml</code> copied and filled from the template.</li>
+              <li>Evidence of real iteration in git history.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Suggested 200-Word Methodology Summary</h3>
+        <p class="small">Use this as a starting point, then edit it to match the final implementation.</p>
+        <div class="box">
+          <p>
+            Deterministic hybrid ranker for the Senior AI Engineer JD. The model scores direct career evidence of production retrieval, search, ranking, recommendation, embeddings, vector infrastructure, Python, and evaluation systems, with career-history evidence weighted above skill tags to avoid AI-keyword stuffing. A separate logistics and behavior modifier incorporates Redrob signals such as recent activity, open-to-work status, recruiter response rate, response time, notice period, verification, and location or relocation fit. Risk penalties demote service-only careers, pure research profiles, irrelevant AI domains, stale candidates, inconsistent skill-duration claims, and other honeypot-like anomalies. Final rankings are generated by stable sorting on score and candidate ID, then reasonings are built from the highest-scoring factual evidence and the main concern for each candidate. The ranking step streams the 100K JSONL file, runs fully on CPU without network access, and produces a validated top-100 CSV with a single command.
+          </p>
+        </div>
+      </section>
+
+      <section id="timeline">
+        <h2>Execution Timeline</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Duration</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Document and schema lock</td>
+              <td>0.5 day</td>
+              <td>Requirement notes, feature dictionary, rejection checklist.</td>
+            </tr>
+            <tr>
+              <td>Baseline implementation</td>
+              <td>1 day</td>
+              <td>Working <code>rank.py</code>, initial top 100, validator pass.</td>
+            </tr>
+            <tr>
+              <td>Feature refinement and trap defense</td>
+              <td>1 to 1.5 days</td>
+              <td>Component scores, risk penalties, audit exports, top-200 review.</td>
+            </tr>
+            <tr>
+              <td>Reasoning and packaging</td>
+              <td>0.5 day</td>
+              <td>Specific reasonings, README, metadata, requirements, reproducibility command.</td>
+            </tr>
+            <tr>
+              <td>Final QA</td>
+              <td>0.5 day</td>
+              <td>Runtime proof, validation proof, sandbox test, final CSV.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="decisions">
+        <h2>Pivotal Decision Points</h2>
+        <p>These are the places where the project direction can change. The recommended option is conservative and competition-aligned.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Decision</th>
+              <th>Option A</th>
+              <th>Option B</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ranking architecture</td>
+              <td>Pure deterministic rules: fastest, transparent, easy to defend.</td>
+              <td>Local embeddings plus rules: better semantic recall, more artifact/dependency complexity.</td>
+              <td>Start with rules, add local embeddings only after baseline validation.</td>
+            </tr>
+            <tr>
+              <td>Manual audit scope</td>
+              <td>Audit only top 100.</td>
+              <td>Audit top 200 and ranks 80 to 130 for cutoff mistakes.</td>
+              <td>Audit top 200. Cutoff errors can hurt NDCG@50 and MAP.</td>
+            </tr>
+            <tr>
+              <td>Behavioral weighting</td>
+              <td>Small modifier so strong technical profiles remain high.</td>
+              <td>Large modifier so only responsive candidates rank high.</td>
+              <td>Use a capped modifier. The JD requires technical fit first but explicitly says inactive candidates should be down-weighted.</td>
+            </tr>
+            <tr>
+              <td>Sandbox platform</td>
+              <td>HuggingFace Spaces or Streamlit Cloud with sample upload.</td>
+              <td>Docker image and run command.</td>
+              <td>Use Streamlit or HuggingFace if the UI is simple; Docker if dependency reproducibility matters more.</td>
+            </tr>
+            <tr>
+              <td>Reasoning style</td>
+              <td>Template from structured facts.</td>
+              <td>LLM-written explanations.</td>
+              <td>Template from facts. It is safer, deterministic, and avoids hallucinations.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="checklists">
+        <h2>Final Checklists</h2>
+        <div class="two-col">
+          <div class="box checklist">
+            <h3>Build Checklist</h3>
+            <label><input type="checkbox"> Parser streams full <code>candidates.jsonl</code> without memory spikes.</label>
+            <label><input type="checkbox"> Candidate IDs are validated against <code>CAND_XXXXXXX</code>.</label>
+            <label><input type="checkbox"> Feature extraction covers profile, career history, education, skills, certifications, languages, and Redrob signals.</label>
+            <label><input type="checkbox"> Scores are deterministic and sorted by <code>(-score, candidate_id)</code>.</label>
+            <label><input type="checkbox"> Reasonings are generated from candidate facts only.</label>
+            <label><input type="checkbox"> Top 200 audit file includes score components and penalty reasons.</label>
+            <label><input type="checkbox"> Trap and honeypot checks are included as general consistency logic.</label>
+          </div>
+          <div class="box checklist">
+            <h3>Submission Checklist</h3>
+            <label><input type="checkbox"> Final CSV has header <code>candidate_id,rank,score,reasoning</code>.</label>
+            <label><input type="checkbox"> Exactly 100 rows, ranks 1 to 100, unique candidate IDs.</label>
+            <label><input type="checkbox"> Scores are non-increasing and ties are deterministic.</label>
+            <label><input type="checkbox"> <code>python data/validate_submission.py final.csv</code> passes.</label>
+            <label><input type="checkbox"> Full run finishes within 5 minutes, CPU only, no network.</label>
+            <label><input type="checkbox"> README has one reproduction command.</label>
+            <label><input type="checkbox"> <code>submission_metadata.yaml</code> is complete and matches portal metadata.</label>
+            <label><input type="checkbox"> Sandbox/demo link runs on a small sample.</label>
+            <label><input type="checkbox"> AI tools declaration is honest and consistent with development history.</label>
+          </div>
+        </div>
+
+        <h3>Commands To Keep Handy</h3>
+        <pre><code># Generate final submission
+python rank.py --candidates ./data/candidates.jsonl --out ./submission.csv
+
+# Validate format
+python data/validate_submission.py ./submission.csv
+
+# Time the full ranking step
+/usr/bin/time -v python rank.py --candidates ./data/candidates.jsonl --out ./submission.csv
+
+# Inspect output shape
+wc -l submission.csv
+head -5 submission.csv
+tail -5 submission.csv</code></pre>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

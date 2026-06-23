@@ -1,9 +1,9 @@
 [project]
 name = "talent-chunk-v2"
 version = "0.1.0"
-description = "Add your description here"
+description = "Deterministic Redrob candidate ranking project"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.10"
 dependencies = [
     "polars>=1.41.2",
     "pyyaml>=6.0.3",

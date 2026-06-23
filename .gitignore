@@ -1,1 +1,12 @@
-data
+data/
+.repo.git/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+artifacts/
+submission.csv
+.DS_Store
